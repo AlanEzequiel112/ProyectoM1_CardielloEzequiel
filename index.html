@@ -1,0 +1,36 @@
+ <!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Proyecto M1 - Generador de paletas</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+<header>
+  <h1>Generador de Paletas de Colores</h1>
+  <p>Selecciona la cantidad de paletas y el formato para generar los colores.</p>
+</header>
+
+<section class="controles">
+  <select id="seleccionTamaño">
+    <option value="6">6 colores</option>
+    <option value="8">8 colores</option>
+    <option value="9" selected>9 colores</option>
+  </select>
+
+  <button id="botonPrimario">Generar Paleta</button>
+  <button id="cambiarFormato" class="botonSecundario">Cambiar a HSL</button>
+</section>
+
+<main>
+  <section class="paleta" id="paleta"></section>
+</main>
+
+<footer>
+  <p> Copyright 2026 </p>
+</footer>
+
+</body>
+</html>
