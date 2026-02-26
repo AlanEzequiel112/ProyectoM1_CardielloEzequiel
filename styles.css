@@ -1,0 +1,87 @@
+/* Variables de color base */
+:root {
+  --fondo: #b17474;
+  --texto: #000000;
+  --acento: #00c851;
+  --tarjeta: #ffffff;
+}
+
+/* Reset y base */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
+}
+
+body {
+  background: var(--fondo);
+  color: var(--texto);
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 20px;
+}
+
+header {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.controles {
+  display: flex;
+  gap: 12px;
+  margin-bottom: 30px;
+  width: 90%;
+  max-width: 600px;
+  justify-content: center;
+}
+
+select,
+button {
+  padding: 12px 20px;
+  border-radius: 30px;
+  font-weight: 600;
+  font-size: 1rem;
+  cursor: pointer;
+  border: none;
+}
+
+button {
+  background: var(--acento);
+  color: #000;
+  transition: opacity 0.2s ease;
+}
+
+button:hover {
+  opacity: 0.9;
+}
+
+.paleta {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+  gap: 20px;
+  width: 90%;
+  max-width: 1200px;
+}
+
+.tarjeta {
+  background: var(--tarjeta);
+  border-radius: 18px;
+  overflow: hidden;
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.4);
+}
+
+.color {
+  height: 140px;
+  border-radius: 18px 18px 0 0;
+}
+
+.codigo {
+  padding: 15px;
+  text-align: center;
+  font-weight: 600;
+  cursor: default;
+  user-select: all;
+}
