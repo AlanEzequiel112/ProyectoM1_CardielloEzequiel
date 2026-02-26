@@ -78,14 +78,18 @@ button:hover {
   border-radius: 18px 18px 0 0;
 }
 
-.codigo {
-  padding: 15px;
-  text-align: center;
-  font-weight: 600;
-  cursor: default;
-  user-select: all;
-
+.codigo{
+  padding:15px;
+  text-align:center;
+  font-weight:600;
+  cursor:pointer;
+  position:relative;
+  min-height:55px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
 }
+
 .botonSecundario {
   background: transparent;
   border: 2px solid #3399ff;
