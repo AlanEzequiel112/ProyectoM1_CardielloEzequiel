@@ -29,6 +29,18 @@
       <div class="grupo-botones">
         <button type="button" id="botonPrimario">Generar Paleta</button>
       </div>
+      <button
+  type="button"
+  id="cambiarFormato"
+  class="botonSecundario"
+  aria-pressed="false"
+>
+  Cambiar a HSL
+</button>
+
+<div class="estado-formato" aria-live="polite">
+  <span id="textoFormato">Formato actual: HEX</span>
+</div>
     </form>
 
     <section class="paleta" id="paleta" aria-label="Paleta generada"></section>

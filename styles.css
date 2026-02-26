@@ -1,9 +1,9 @@
 /* Variables de color base */
 :root {
-  --fondo: #b17474;
-  --texto: #000000;
+  --fondo: #1e1f26;
+  --texto: #ffffff;
   --acento: #00c851;
-  --tarjeta: #ffffff;
+  --tarjeta: #2a2d38;
 }
 
 /* Reset y base */
@@ -84,4 +84,22 @@ button:hover {
   font-weight: 600;
   cursor: default;
   user-select: all;
+
+}
+.botonSecundario {
+  background: transparent;
+  border: 2px solid #3399ff;
+  color: #3399ff;
+  transition: opacity 0.2s ease;
+}
+
+.botonSecundario:hover {
+  opacity: 0.8;
+}
+
+.estado-formato {
+  font-size: 0.9rem;
+  opacity: 0.7;
+  margin-top: 10px;
+  text-align: center;
 }
