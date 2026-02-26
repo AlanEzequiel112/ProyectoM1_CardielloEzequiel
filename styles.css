@@ -1,82 +1,175 @@
-/* Variables de color base */
-:root {
-  --fondo: #1e1f26;
-  --texto: #ffffff;
-  --acento: #00c851;
-  --tarjeta: #2a2d38;
+/* =====================================================
+   1️⃣ VARIABLES GLOBALES
+===================================================== */
+
+:root{
+  --fondo:#1e1f26;
+  --primario:#2c2f3a;
+  --tarjeta:#2a2d38;
+  --texto:#f1f1f1;
+  --acento:#00c851;
+  --info:#3399ff;
+  --advertencia:#ffc107;
 }
 
-/* Reset y base */
-* {
-  box-sizing: border-box;
-  margin: 0;
-  padding: 0;
-  font-family: system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
+/* =====================================================
+   2️⃣ RESET Y BASE GLOBAL
+===================================================== */
+
+*{
+  box-sizing:border-box;
+  margin:0;
+  padding:0;
+  font-family:system-ui,-apple-system,BlinkMacSystemFont,sans-serif;
 }
 
-body {
-  background: var(--fondo);
-  color: var(--texto);
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  padding: 20px;
+body{
+  background:var(--fondo);
+  color:var(--texto);
+  min-height:100vh;
+  display:flex;
+  flex-direction:column;
+  align-items:center;
 }
 
-header {
-  text-align: center;
-  margin-bottom: 20px;
+/* =====================================================
+   3️⃣ LAYOUT PRINCIPAL
+===================================================== */
+
+main{
+  width:100%;
+  max-width:1200px;
+  margin:0 auto;
+  display:flex;
+  flex-direction:column;
+  align-items:center;
 }
 
-.controles {
-  display: flex;
-  gap: 12px;
-  margin-bottom: 30px;
-  width: 90%;
-  max-width: 600px;
-  justify-content: center;
+/* =====================================================
+   4️⃣ HEADER
+===================================================== */
+
+header{
+  text-align:center;
+  padding:40px 20px 20px;
+  border-bottom:1px solid rgba(255,255,255,0.08);
 }
 
-select,
-button {
-  padding: 12px 20px;
-  border-radius: 30px;
-  font-weight: 600;
-  font-size: 1rem;
-  cursor: pointer;
-  border: none;
+h1{
+  font-size:2.5rem;
 }
 
-button {
-  background: var(--acento);
-  color: #000;
-  transition: opacity 0.2s ease;
+.subtitulo{
+  margin-top:10px;
+  opacity:0.8;
 }
 
-button:hover {
-  opacity: 0.9;
+/* =====================================================
+   5️⃣ FORMULARIO DE CONTROLES
+===================================================== */
+
+.controles{
+  margin:30px 0;
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  gap:18px;
+  border-bottom:1px solid rgba(255,255,255,0.08);
+  padding-bottom:25px;
+  width:100%;
+  max-width:600px;
 }
 
-.paleta {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
-  gap: 20px;
-  width: 90%;
-  max-width: 1200px;
+.label-visible{
+  font-weight:600;
+  text-align:center;
 }
 
-.tarjeta {
-  background: var(--tarjeta);
-  border-radius: 18px;
-  overflow: hidden;
-  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.4);
+/* Inputs y botones base */
+
+button, select{
+  padding:12px 20px;
+  border-radius:30px;
+  font-weight:600;
+  font-size:1rem;
+  cursor:pointer;
 }
 
-.color {
-  height: 140px;
-  border-radius: 18px 18px 0 0;
+button{
+  background:var(--acento);
+  border:none;
+  color:#000;
 }
+
+button:hover{
+  opacity:0.9;
+}
+
+/* Botón secundario */
+
+.botonSecundario{
+  background:transparent;
+  border:2px solid var(--info);
+  color:var(--info);
+}
+
+/* Grupo de botones */
+
+.grupo-botones{
+  display:flex;
+  gap:12px;
+  justify-content:center;
+  align-items:center;
+}
+
+.grupo-botones button{
+  flex:0 0 auto;
+  min-width:170px;
+}
+
+/* Estado formato */
+
+.estado-formato{
+  font-size:0.9rem;
+  opacity:0.7;
+  border-top:1px solid rgba(255,255,255,0.08);
+  padding-top:10px;
+}
+
+/* =====================================================
+   6️⃣ COMPONENTE PALETA
+===================================================== */
+
+.paleta{
+  display:flex;
+  flex-wrap:wrap;
+  gap:20px;
+  justify-content:center;
+}
+
+/* Tarjeta individual */
+
+.tarjeta{
+  background:var(--tarjeta);
+  border-radius:18px;
+  overflow:hidden;
+  box-shadow:0 6px 16px rgba(0,0,0,0.4);
+  position:relative;
+  transition:transform 0.2s ease;
+  width:180px;
+}
+
+.tarjeta:hover{
+  transform:translateY(-4px);
+}
+
+/* Bloque color */
+
+.color{
+  height:140px;
+}
+
+/* Código del color */
 
 .codigo{
   padding:15px;
@@ -84,51 +177,93 @@ button:hover {
   font-weight:600;
   cursor:pointer;
   position:relative;
-  min-height:55px;
-  display:flex;
-  align-items:center;
-  justify-content:center;
 }
 
-.botonSecundario {
-  background: transparent;
-  border: 2px solid #3399ff;
-  color: #3399ff;
-  transition: opacity 0.2s ease;
+.codigo::after{
+  content:"Click para copiar código";
+  position:absolute;
+  bottom:100%;
+  left:50%;
+  transform:translateX(-50%);
+  background:#fff;
+  color:#000;
+  padding:5px 10px;
+  font-size:0.75rem;
+  border-radius:6px;
+  opacity:0;
+  pointer-events:none;
+  transition:0.2s;
+  white-space:nowrap;
 }
 
-.botonSecundario:hover {
-  opacity: 0.8;
+.codigo:hover::after{
+  opacity:1;
 }
 
-.estado-formato {
-  font-size: 0.9rem;
-  opacity: 0.7;
-  margin-top: 10px;
-  text-align: center;
+/* Botón bloqueo */
+
+.bloqueo-btn{
+  position:absolute;
+  top:10px;
+  right:10px;
+  background:rgba(0,0,0,0.4);
+  border:none;
+  border-radius:6px;
+  padding:6px;
+  cursor:pointer;
 }
 
-.tarjeta {
-  position: relative;
-  background: var(--tarjeta);
-  border-radius: 18px;
-  overflow: hidden;
-  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.4);
+.bloqueado{
+  background:var(--acento);
 }
 
-.bloqueo-btn {
-  position: absolute;
-  top: 10px;
-  right: 10px;
-  background: rgba(0, 0, 0, 0.5);
-  border: none;
-  border-radius: 8px;
-  padding: 6px 8px;
-  cursor: pointer;
-  color: white;
-  font-size: 14px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  z-index: 10;
+/* =====================================================
+   7️⃣ TOAST (NOTIFICACIONES)
+===================================================== */
+
+.toast{
+  position:fixed;
+  top:20px;
+  right:20px;
+  padding:12px 20px;
+  border-radius:8px;
+  font-weight:600;
+  opacity:0;
+  transform:translateY(-10px);
+  transition:all 0.3s ease;
+  z-index:9999;
+}
+
+.toast.mostrar{
+  opacity:1;
+  transform:translateY(0);
+}
+
+.toast.exito{
+  background:var(--acento);
+  color:#000;
+}
+
+.toast.info{
+  background:var(--info);
+  color:#fff;
+}
+
+.toast.advertencia{
+  background:var(--advertencia);
+  color:#000;
+}
+
+/* =====================================================
+   8️⃣ ANIMACIONES
+===================================================== */
+
+@keyframes desbloqueoAuto{
+  0%{box-shadow:0 0 0 0 rgba(255,193,7,0.9);}
+  70%{box-shadow:0 0 0 12px rgba(255,193,7,0);}
+  100%{box-shadow:0 0 0 0 rgba(255,193,7,0);}
+}
+
+.desbloqueo-auto{
+  animation:desbloqueoAuto 0.8s ease;
 }

@@ -1,53 +1,60 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Proyecto M1 - Generador de Paletas</title>
-  <link rel="stylesheet" href="styles.css" />
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Proyecto m1 - Generador de Paletas</title>
+  <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-  <header>
-    <h1>Generador de Paletas de Colores</h1>
-    <p class="subtitulo">
-      Selecciona la cantidad de paletas y el formato para generar los colores.
-    </p>
-  </header>
 
-  <main>
-    <form class="controles" aria-label="Controles para generar paletas">
-      <label for="seleccionTamaño" class="label-visible">
-        Selecciona el número de colores de la paleta:
-      </label>
+<header>
+  <h1>Generador de Paletas de Colores</h1>
+  <p class="subtitulo">
+    Crea combinaciones armónicas, bloquea colores y copia códigos fácilmente.
+  </p>
+</header>
 
-      <select id="seleccionTamaño" name="tamañoPaleta">
-        <option value="6">6 colores</option>
-        <option value="8">8 colores</option>
-        <option value="9" selected>9 colores</option>
-      </select>
+<main>
+  
 
-      <div class="grupo-botones">
-        <button type="button" id="botonPrimario">Generar Paleta</button>
-      </div>
-      <button
-  type="button"
-  id="cambiarFormato"
-  class="botonSecundario"
-  aria-pressed="false"
->
-  Cambiar a HSL
-</button>
+  <form class="controles" aria-label="Controles para generar paletas">
 
-<div class="estado-formato" aria-live="polite">
-  <span id="textoFormato">Formato actual: HEX</span>
-</div>
-    </form>
+    <label for="seleccionTamaño" class="label-visible">
+      Selecciona el número de colores de la paleta:
+    </label>
 
-    <section class="paleta" id="paleta" aria-label="Paleta generada"></section>
-  </main>
+    <select id="seleccionTamaño" name="tamañoPaleta">
+      <option value="6">6 colores</option>
+      <option value="8">8 colores</option>
+      <option value="9" selected>9 colores</option>
+    </select>
 
-  <div id="toast" class="toast" role="status" aria-live="polite"></div>
+    <div class="grupo-botones">
+      <button type="button" id="botonPrimario">
+        Generar Paleta
+      </button>
 
-  <script src="script.js"></script>
+      <button type="button"
+        id="cambiarFormato"
+        class="botonSecundario"
+        aria-pressed="false">
+        Cambiar a HSL
+      </button>
+    </div>
+
+    <div class="estado-formato" aria-live="polite">
+      <span id="textoFormato">Formato actual: HEX</span>
+    </div>
+
+  </form>
+
+  <section class="paleta" id="paleta" aria-label="Paleta generada"></section>
+
+</main>
+
+<div id="toast" class="toast" role="status" aria-live="polite"></div>
+
+<script src="script.js"></script>
 </body>
 </html>
