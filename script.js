@@ -47,6 +47,20 @@ function hexAHSL(H) {
   return `hsl(${Math.round(h * 360)}, ${Math.round(s * 100)}%, ${Math.round(l * 100)}%)`;
 }
 
+/* ===== Persistencia ===== */
+function guardarEstado() {
+  localStorage.setItem("paletaColores", JSON.stringify(colores));
+}
+
+function cargarEstado() {
+  const guardado = localStorage.getItem("paletaColores");
+  if (guardado) {
+    colores = JSON.parse(guardado);
+  } else {
+    generarPaleta();
+  }
+}
+
 /* ===== Generar Paleta ===== */
 function generarPaleta() {
   const tamaño = parseInt(seleccionTamaño.value);
@@ -59,17 +73,16 @@ function generarPaleta() {
     });
   }
 
+  guardarEstado();
   mostrarPaleta();
 }
 
 /* ===== Mostrar Paleta ===== */
 function mostrarPaleta() {
   paleta.innerHTML = "";
-
   const tamañoActual = parseInt(seleccionTamaño.value);
 
   colores.slice(0, tamañoActual).forEach((colorObj, index) => {
-
     const tarjeta = document.createElement("article");
     tarjeta.className = "tarjeta";
 
@@ -83,6 +96,7 @@ function mostrarPaleta() {
 
     botonBloqueo.addEventListener("click", () => {
       colorObj.bloqueado = !colorObj.bloqueado;
+      guardarEstado();
       mostrarPaleta();
     });
 
@@ -100,9 +114,8 @@ function mostrarPaleta() {
   });
 }
 
-/* ===== Evento Generar ===== */
+/* ===== Eventos ===== */
 botonGenerar.addEventListener("click", () => {
-
   if (colores.length === 0) {
     generarPaleta();
     return;
@@ -114,10 +127,10 @@ botonGenerar.addEventListener("click", () => {
       : { valor: generarHex(), bloqueado: false }
   );
 
+  guardarEstado();
   mostrarPaleta();
 });
 
-/* ===== Evento Cambiar Formato ===== */
 botonFormato.addEventListener("click", () => {
   formatoActual = formatoActual === "HEX" ? "HSL" : "HEX";
   botonFormato.textContent =
@@ -128,7 +141,21 @@ botonFormato.addEventListener("click", () => {
   mostrarPaleta();
 });
 
-/* ===== Cambiar tamaño ===== */
 seleccionTamaño.addEventListener("change", () => {
-  mostrarPaleta(); 
+  const tamañoVisible = parseInt(seleccionTamaño.value);
+  let desbloqueados = false;
+
+  colores.forEach((color, index) => {
+    if (index >= tamañoVisible && color.bloqueado) {
+      color.bloqueado = false;
+      desbloqueados = true;
+    }
+  });
+
+  guardarEstado();
+  mostrarPaleta();
 });
+
+/* ===== Inicializar ===== */
+cargarEstado();
+mostrarPaleta();    
